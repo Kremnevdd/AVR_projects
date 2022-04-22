@@ -1,0 +1,426 @@
+
+I2C test v1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000021c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  0000021c  000002b0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000003  00800062  00800062  000002b2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002b2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002e4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000040  00000000  00000000  00000320  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000008eb  00000000  00000000  00000360  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000052a  00000000  00000000  00000c4b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000003d2  00000000  00000000  00001175  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000064  00000000  00000000  00001548  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000030a  00000000  00000000  000015ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000414  00000000  00000000  000018b6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000030  00000000  00000000  00001cca  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0e c0       	rjmp	.+28     	; 0x1e <__ctors_end>
+   2:	28 c0       	rjmp	.+80     	; 0x54 <__bad_interrupt>
+   4:	27 c0       	rjmp	.+78     	; 0x54 <__bad_interrupt>
+   6:	26 c0       	rjmp	.+76     	; 0x54 <__bad_interrupt>
+   8:	25 c0       	rjmp	.+74     	; 0x54 <__bad_interrupt>
+   a:	24 c0       	rjmp	.+72     	; 0x54 <__bad_interrupt>
+   c:	23 c0       	rjmp	.+70     	; 0x54 <__bad_interrupt>
+   e:	22 c0       	rjmp	.+68     	; 0x54 <__bad_interrupt>
+  10:	21 c0       	rjmp	.+66     	; 0x54 <__bad_interrupt>
+  12:	20 c0       	rjmp	.+64     	; 0x54 <__bad_interrupt>
+  14:	1f c0       	rjmp	.+62     	; 0x54 <__bad_interrupt>
+  16:	1e c0       	rjmp	.+60     	; 0x54 <__bad_interrupt>
+  18:	1d c0       	rjmp	.+58     	; 0x54 <__bad_interrupt>
+  1a:	1c c0       	rjmp	.+56     	; 0x54 <__bad_interrupt>
+  1c:	1b c0       	rjmp	.+54     	; 0x54 <__bad_interrupt>
+
+0000001e <__ctors_end>:
+  1e:	11 24       	eor	r1, r1
+  20:	1f be       	out	0x3f, r1	; 63
+  22:	cf e5       	ldi	r28, 0x5F	; 95
+  24:	d1 e0       	ldi	r29, 0x01	; 1
+  26:	de bf       	out	0x3e, r29	; 62
+  28:	cd bf       	out	0x3d, r28	; 61
+
+0000002a <__do_copy_data>:
+  2a:	10 e0       	ldi	r17, 0x00	; 0
+  2c:	a0 e6       	ldi	r26, 0x60	; 96
+  2e:	b0 e0       	ldi	r27, 0x00	; 0
+  30:	ec e1       	ldi	r30, 0x1C	; 28
+  32:	f2 e0       	ldi	r31, 0x02	; 2
+  34:	02 c0       	rjmp	.+4      	; 0x3a <__do_copy_data+0x10>
+  36:	05 90       	lpm	r0, Z+
+  38:	0d 92       	st	X+, r0
+  3a:	a2 36       	cpi	r26, 0x62	; 98
+  3c:	b1 07       	cpc	r27, r17
+  3e:	d9 f7       	brne	.-10     	; 0x36 <__do_copy_data+0xc>
+
+00000040 <__do_clear_bss>:
+  40:	20 e0       	ldi	r18, 0x00	; 0
+  42:	a2 e6       	ldi	r26, 0x62	; 98
+  44:	b0 e0       	ldi	r27, 0x00	; 0
+  46:	01 c0       	rjmp	.+2      	; 0x4a <.do_clear_bss_start>
+
+00000048 <.do_clear_bss_loop>:
+  48:	1d 92       	st	X+, r1
+
+0000004a <.do_clear_bss_start>:
+  4a:	a5 36       	cpi	r26, 0x65	; 101
+  4c:	b2 07       	cpc	r27, r18
+  4e:	e1 f7       	brne	.-8      	; 0x48 <.do_clear_bss_loop>
+  50:	ca d0       	rcall	.+404    	; 0x1e6 <main>
+  52:	e2 c0       	rjmp	.+452    	; 0x218 <_exit>
+
+00000054 <__bad_interrupt>:
+  54:	d5 cf       	rjmp	.-86     	; 0x0 <__vectors>
+
+00000056 <send>:
+volatile char D ;
+
+
+
+void send(){
+	 for(int p=7; p>=0; p--){
+  56:	27 e0       	ldi	r18, 0x07	; 7
+  58:	30 e0       	ldi	r19, 0x00	; 0
+	    PORTB |= (D>>p)&(1<<PB0);
+  5a:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <__data_end>
+  5e:	48 b3       	in	r20, 0x18	; 24
+  60:	89 2f       	mov	r24, r25
+  62:	90 e0       	ldi	r25, 0x00	; 0
+  64:	02 2e       	mov	r0, r18
+  66:	02 c0       	rjmp	.+4      	; 0x6c <send+0x16>
+  68:	95 95       	asr	r25
+  6a:	87 95       	ror	r24
+  6c:	0a 94       	dec	r0
+  6e:	e2 f7       	brpl	.-8      	; 0x68 <send+0x12>
+  70:	81 70       	andi	r24, 0x01	; 1
+  72:	99 27       	eor	r25, r25
+  74:	84 2b       	or	r24, r20
+  76:	88 bb       	out	0x18, r24	; 24
+		PORTB |=(1<<PB1);
+  78:	c1 9a       	sbi	0x18, 1	; 24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  7a:	4f e7       	ldi	r20, 0x7F	; 127
+  7c:	89 ea       	ldi	r24, 0xA9	; 169
+  7e:	93 e0       	ldi	r25, 0x03	; 3
+  80:	41 50       	subi	r20, 0x01	; 1
+  82:	80 40       	sbci	r24, 0x00	; 0
+  84:	90 40       	sbci	r25, 0x00	; 0
+  86:	e1 f7       	brne	.-8      	; 0x80 <send+0x2a>
+  88:	00 c0       	rjmp	.+0      	; 0x8a <send+0x34>
+  8a:	00 00       	nop
+	    	_delay_ms(300);
+			PORTB &=~(1<<PB0);
+  8c:	c0 98       	cbi	0x18, 0	; 24
+		   PORTB &=~(1<<PB1);	
+  8e:	c1 98       	cbi	0x18, 1	; 24
+  90:	4f e7       	ldi	r20, 0x7F	; 127
+  92:	89 ea       	ldi	r24, 0xA9	; 169
+  94:	93 e0       	ldi	r25, 0x03	; 3
+  96:	41 50       	subi	r20, 0x01	; 1
+  98:	80 40       	sbci	r24, 0x00	; 0
+  9a:	90 40       	sbci	r25, 0x00	; 0
+  9c:	e1 f7       	brne	.-8      	; 0x96 <send+0x40>
+  9e:	00 c0       	rjmp	.+0      	; 0xa0 <send+0x4a>
+  a0:	00 00       	nop
+volatile char D ;
+
+
+
+void send(){
+	 for(int p=7; p>=0; p--){
+  a2:	21 50       	subi	r18, 0x01	; 1
+  a4:	31 09       	sbc	r19, r1
+  a6:	c8 f6       	brcc	.-78     	; 0x5a <send+0x4>
+	    	_delay_ms(300);
+			PORTB &=~(1<<PB0);
+		   PORTB &=~(1<<PB1);	
+		   _delay_ms(300);		
+}
+state =3;
+  a8:	83 e0       	ldi	r24, 0x03	; 3
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  b0:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+  b4:	08 95       	ret
+
+000000b6 <start>:
+       }
+void start(){	
+		PORTB |= (1<<PB0);
+  b6:	c0 9a       	sbi	0x18, 0	; 24
+  b8:	2f eb       	ldi	r18, 0xBF	; 191
+  ba:	84 ed       	ldi	r24, 0xD4	; 212
+  bc:	91 e0       	ldi	r25, 0x01	; 1
+  be:	21 50       	subi	r18, 0x01	; 1
+  c0:	80 40       	sbci	r24, 0x00	; 0
+  c2:	90 40       	sbci	r25, 0x00	; 0
+  c4:	e1 f7       	brne	.-8      	; 0xbe <start+0x8>
+  c6:	00 c0       	rjmp	.+0      	; 0xc8 <start+0x12>
+  c8:	00 00       	nop
+	_delay_ms(150);
+	PORTB &= ~(1<<PORTB0);
+  ca:	c0 98       	cbi	0x18, 0	; 24
+  cc:	2f eb       	ldi	r18, 0xBF	; 191
+  ce:	84 ed       	ldi	r24, 0xD4	; 212
+  d0:	91 e0       	ldi	r25, 0x01	; 1
+  d2:	21 50       	subi	r18, 0x01	; 1
+  d4:	80 40       	sbci	r24, 0x00	; 0
+  d6:	90 40       	sbci	r25, 0x00	; 0
+  d8:	e1 f7       	brne	.-8      	; 0xd2 <start+0x1c>
+  da:	00 c0       	rjmp	.+0      	; 0xdc <start+0x26>
+  dc:	00 00       	nop
+	_delay_ms(150);
+	PORTB |= (1<<PB0);
+  de:	c0 9a       	sbi	0x18, 0	; 24
+  e0:	2f eb       	ldi	r18, 0xBF	; 191
+  e2:	84 ed       	ldi	r24, 0xD4	; 212
+  e4:	91 e0       	ldi	r25, 0x01	; 1
+  e6:	21 50       	subi	r18, 0x01	; 1
+  e8:	80 40       	sbci	r24, 0x00	; 0
+  ea:	90 40       	sbci	r25, 0x00	; 0
+  ec:	e1 f7       	brne	.-8      	; 0xe6 <start+0x30>
+  ee:	00 c0       	rjmp	.+0      	; 0xf0 <start+0x3a>
+  f0:	00 00       	nop
+	_delay_ms(150);
+	PORTB &= ~(1<<PORTB0);
+  f2:	c0 98       	cbi	0x18, 0	; 24
+  f4:	2f eb       	ldi	r18, 0xBF	; 191
+  f6:	84 ed       	ldi	r24, 0xD4	; 212
+  f8:	91 e0       	ldi	r25, 0x01	; 1
+  fa:	21 50       	subi	r18, 0x01	; 1
+  fc:	80 40       	sbci	r24, 0x00	; 0
+  fe:	90 40       	sbci	r25, 0x00	; 0
+ 100:	e1 f7       	brne	.-8      	; 0xfa <start+0x44>
+ 102:	00 c0       	rjmp	.+0      	; 0x104 <start+0x4e>
+ 104:	00 00       	nop
+	_delay_ms(150);
+	PORTB |= (1<<PB0);
+ 106:	c0 9a       	sbi	0x18, 0	; 24
+ 108:	2f eb       	ldi	r18, 0xBF	; 191
+ 10a:	84 ed       	ldi	r24, 0xD4	; 212
+ 10c:	91 e0       	ldi	r25, 0x01	; 1
+ 10e:	21 50       	subi	r18, 0x01	; 1
+ 110:	80 40       	sbci	r24, 0x00	; 0
+ 112:	90 40       	sbci	r25, 0x00	; 0
+ 114:	e1 f7       	brne	.-8      	; 0x10e <start+0x58>
+ 116:	00 c0       	rjmp	.+0      	; 0x118 <start+0x62>
+ 118:	00 00       	nop
+	_delay_ms(150);
+	PORTB &= ~(1<<PORTB0);
+ 11a:	c0 98       	cbi	0x18, 0	; 24
+ 11c:	2f eb       	ldi	r18, 0xBF	; 191
+ 11e:	84 ed       	ldi	r24, 0xD4	; 212
+ 120:	91 e0       	ldi	r25, 0x01	; 1
+ 122:	21 50       	subi	r18, 0x01	; 1
+ 124:	80 40       	sbci	r24, 0x00	; 0
+ 126:	90 40       	sbci	r25, 0x00	; 0
+ 128:	e1 f7       	brne	.-8      	; 0x122 <start+0x6c>
+ 12a:	00 c0       	rjmp	.+0      	; 0x12c <start+0x76>
+ 12c:	00 00       	nop
+	_delay_ms(150);	
+	state=2;
+ 12e:	82 e0       	ldi	r24, 0x02	; 2
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 136:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 13a:	08 95       	ret
+
+0000013c <stop>:
+}
+void stop(){
+	 PORTB |=(1<<PB1);
+ 13c:	c1 9a       	sbi	0x18, 1	; 24
+ 13e:	2f eb       	ldi	r18, 0xBF	; 191
+ 140:	84 ed       	ldi	r24, 0xD4	; 212
+ 142:	91 e0       	ldi	r25, 0x01	; 1
+ 144:	21 50       	subi	r18, 0x01	; 1
+ 146:	80 40       	sbci	r24, 0x00	; 0
+ 148:	90 40       	sbci	r25, 0x00	; 0
+ 14a:	e1 f7       	brne	.-8      	; 0x144 <stop+0x8>
+ 14c:	00 c0       	rjmp	.+0      	; 0x14e <stop+0x12>
+ 14e:	00 00       	nop
+	_delay_ms(150);
+    PORTB &=~(1<<PB1);
+ 150:	c1 98       	cbi	0x18, 1	; 24
+ 152:	2f eb       	ldi	r18, 0xBF	; 191
+ 154:	84 ed       	ldi	r24, 0xD4	; 212
+ 156:	91 e0       	ldi	r25, 0x01	; 1
+ 158:	21 50       	subi	r18, 0x01	; 1
+ 15a:	80 40       	sbci	r24, 0x00	; 0
+ 15c:	90 40       	sbci	r25, 0x00	; 0
+ 15e:	e1 f7       	brne	.-8      	; 0x158 <stop+0x1c>
+ 160:	00 c0       	rjmp	.+0      	; 0x162 <__stack+0x3>
+ 162:	00 00       	nop
+   _delay_ms(150);
+   PORTB |=(1<<PB1);
+ 164:	c1 9a       	sbi	0x18, 1	; 24
+ 166:	2f eb       	ldi	r18, 0xBF	; 191
+ 168:	84 ed       	ldi	r24, 0xD4	; 212
+ 16a:	91 e0       	ldi	r25, 0x01	; 1
+ 16c:	21 50       	subi	r18, 0x01	; 1
+ 16e:	80 40       	sbci	r24, 0x00	; 0
+ 170:	90 40       	sbci	r25, 0x00	; 0
+ 172:	e1 f7       	brne	.-8      	; 0x16c <__stack+0xd>
+ 174:	00 c0       	rjmp	.+0      	; 0x176 <__stack+0x17>
+ 176:	00 00       	nop
+   _delay_ms(150);
+   PORTB &=~(1<<PB1);
+ 178:	c1 98       	cbi	0x18, 1	; 24
+ 17a:	2f eb       	ldi	r18, 0xBF	; 191
+ 17c:	84 ed       	ldi	r24, 0xD4	; 212
+ 17e:	91 e0       	ldi	r25, 0x01	; 1
+ 180:	21 50       	subi	r18, 0x01	; 1
+ 182:	80 40       	sbci	r24, 0x00	; 0
+ 184:	90 40       	sbci	r25, 0x00	; 0
+ 186:	e1 f7       	brne	.-8      	; 0x180 <__stack+0x21>
+ 188:	00 c0       	rjmp	.+0      	; 0x18a <__stack+0x2b>
+ 18a:	00 00       	nop
+   _delay_ms(150);
+   PORTB |=(1<<PB1);
+ 18c:	c1 9a       	sbi	0x18, 1	; 24
+ 18e:	2f eb       	ldi	r18, 0xBF	; 191
+ 190:	84 ed       	ldi	r24, 0xD4	; 212
+ 192:	91 e0       	ldi	r25, 0x01	; 1
+ 194:	21 50       	subi	r18, 0x01	; 1
+ 196:	80 40       	sbci	r24, 0x00	; 0
+ 198:	90 40       	sbci	r25, 0x00	; 0
+ 19a:	e1 f7       	brne	.-8      	; 0x194 <__stack+0x35>
+ 19c:	00 c0       	rjmp	.+0      	; 0x19e <__stack+0x3f>
+ 19e:	00 00       	nop
+   _delay_ms(150);
+   PORTB &=~(1<<PB1);
+ 1a0:	c1 98       	cbi	0x18, 1	; 24
+ 1a2:	2f eb       	ldi	r18, 0xBF	; 191
+ 1a4:	84 ed       	ldi	r24, 0xD4	; 212
+ 1a6:	91 e0       	ldi	r25, 0x01	; 1
+ 1a8:	21 50       	subi	r18, 0x01	; 1
+ 1aa:	80 40       	sbci	r24, 0x00	; 0
+ 1ac:	90 40       	sbci	r25, 0x00	; 0
+ 1ae:	e1 f7       	brne	.-8      	; 0x1a8 <__stack+0x49>
+ 1b0:	00 c0       	rjmp	.+0      	; 0x1b2 <__stack+0x53>
+ 1b2:	00 00       	nop
+ 1b4:	08 95       	ret
+
+000001b6 <ask>:
+   _delay_ms(150);
+	
+}
+void ask(){
+	if (state==4)
+ 1b6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 1ba:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 1be:	04 97       	sbiw	r24, 0x04	; 4
+ 1c0:	09 f4       	brne	.+2      	; 0x1c4 <ask+0xe>
+	{ stop();
+ 1c2:	bc df       	rcall	.-136    	; 0x13c <stop>
+	} 
+	else if(state !=4);
+	{
+		while (state !=4)
+	{if ((PINB&(1<<PB4))==0){ 
+		state=4;  
+ 1c4:	24 e0       	ldi	r18, 0x04	; 4
+ 1c6:	30 e0       	ldi	r19, 0x00	; 0
+ 1c8:	06 c0       	rjmp	.+12     	; 0x1d6 <ask+0x20>
+		state==1;
+	} 
+	else if(state !=4);
+	{
+		while (state !=4)
+	{if ((PINB&(1<<PB4))==0){ 
+ 1ca:	b4 99       	sbic	0x16, 4	; 22
+ 1cc:	08 c0       	rjmp	.+16     	; 0x1de <ask+0x28>
+		state=4;  
+ 1ce:	30 93 61 00 	sts	0x0061, r19	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 1d2:	20 93 60 00 	sts	0x0060, r18	; 0x800060 <__DATA_REGION_ORIGIN__>
+	{ stop();
+		state==1;
+	} 
+	else if(state !=4);
+	{
+		while (state !=4)
+ 1d6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 1da:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 1de:	84 30       	cpi	r24, 0x04	; 4
+ 1e0:	91 05       	cpc	r25, r1
+ 1e2:	99 f7       	brne	.-26     	; 0x1ca <ask+0x14>
+		}
+	else
+	{}
+	}
+	}
+	}
+ 1e4:	08 95       	ret
+
+000001e6 <main>:
+	
+	
+
+int main(void)
+{ 
+	D=0x25;
+ 1e6:	85 e2       	ldi	r24, 0x25	; 37
+ 1e8:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+	while (1)
+{DDRB|= (1<<PB0)|(1<<PB1);
+ 1ec:	87 b3       	in	r24, 0x17	; 23
+ 1ee:	83 60       	ori	r24, 0x03	; 3
+ 1f0:	87 bb       	out	0x17, r24	; 23
+	PORTB|=(1<<PB4);
+ 1f2:	c4 9a       	sbi	0x18, 4	; 24
+
+switch (state)
+ 1f4:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 1f8:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 1fc:	82 30       	cpi	r24, 0x02	; 2
+ 1fe:	91 05       	cpc	r25, r1
+ 200:	39 f0       	breq	.+14     	; 0x210 <main+0x2a>
+ 202:	83 30       	cpi	r24, 0x03	; 3
+ 204:	91 05       	cpc	r25, r1
+ 206:	31 f0       	breq	.+12     	; 0x214 <main+0x2e>
+ 208:	01 97       	sbiw	r24, 0x01	; 1
+ 20a:	81 f7       	brne	.-32     	; 0x1ec <main+0x6>
+{
+case 1:
+start();
+ 20c:	54 df       	rcall	.-344    	; 0xb6 <start>
+	break;
+ 20e:	ee cf       	rjmp	.-36     	; 0x1ec <main+0x6>
+case 2:
+send();
+ 210:	22 df       	rcall	.-444    	; 0x56 <send>
+	break;
+ 212:	ec cf       	rjmp	.-40     	; 0x1ec <main+0x6>
+case 3:
+ask();
+ 214:	d0 df       	rcall	.-96     	; 0x1b6 <ask>
+	break;
+ 216:	ea cf       	rjmp	.-44     	; 0x1ec <main+0x6>
+
+00000218 <_exit>:
+ 218:	f8 94       	cli
+
+0000021a <__stop_program>:
+ 21a:	ff cf       	rjmp	.-2      	; 0x21a <__stop_program>

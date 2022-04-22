@@ -1,0 +1,9 @@
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\bin\Debug\HyroscoPhciK.exe.config
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\obj\Debug\HyroscoPhciK.csprojResolveAssemblyReference.cache
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\obj\Debug\HyroscoPhciK.Form1.resources
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\obj\Debug\HyroscoPhciK.Properties.Resources.resources
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\obj\Debug\HyroscoPhciK.csproj.GenerateResource.Cache
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\bin\Debug\HyroscoPhciK.exe
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\bin\Debug\HyroscoPhciK.pdb
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\obj\Debug\HyroscoPhciK.exe
+C:\KockSuckers\HyroscoPhciK\HyroscoPhciK\obj\Debug\HyroscoPhciK.pdb

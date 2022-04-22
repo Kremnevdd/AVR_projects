@@ -1,0 +1,10 @@
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\bin\Debug\GeneratorPenetrator.exe.config
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\bin\Debug\GeneratorPenetrator.exe
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\bin\Debug\GeneratorPenetrator.pdb
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\obj\Debug\GeneratorPenetrator.csprojResolveAssemblyReference.cache
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\obj\Debug\GeneratorPenetrator.Form1.resources
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\obj\Debug\GeneratorPenetrator.Properties.Resources.resources
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\obj\Debug\GeneratorPenetrator.csproj.GenerateResource.Cache
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\obj\Debug\GeneratorPenetrator.exe
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\obj\Debug\GeneratorPenetrator.pdb
+C:\KockSuckers\GeneratorPenetrator\GeneratorPenetrator\obj\Debug\GeneratorPenetrator.Shrek.resources
